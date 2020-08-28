@@ -10,6 +10,9 @@ on:  # yamllint disable-line rule:truthy
       - main
     paths:
       - 'services/**'
+  pull_request:
+    paths:
+      - 'services/**'
 
 jobs:
   image-build:
@@ -23,8 +26,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: build docker images
+        if: ${{ github.event_name == 'pull_request' }}
+        run: docker build services/php-apache/ --build-arg PHP_VERSION=${{ matrix.php }}
+
       - name: Build and push Docker images
         uses: docker/build-push-action@v1
+        if: ${{ github.event_name != 'pull_request' }}
         with:
           path: services/php-apache
           username: ${{ secrets.DOCKERHUB_USERNAME }}
