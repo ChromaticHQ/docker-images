@@ -1,8 +1,8 @@
 ---
 name: Build Docker Images
 on:  # yamllint disable-line rule:truthy
-  # Trigger the workflow weekly on Thursday as well as on pushes to the main
-  # branch that include changes to the services/ directoryy.
+  # Trigger the workflow weekly on Thursday as well as on pushes to the default
+  # branch that include changes to the services/ directory.
   schedule:
     - cron: '22 20 * * 4'
   push:
