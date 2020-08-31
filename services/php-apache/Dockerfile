@@ -11,7 +11,6 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
     && apt-get update \
     && apt-get --quiet install -y --no-install-recommends \
       google-chrome-stable \
-      libxss1 \
       nodejs \
       parallel \
       python3-pip \
