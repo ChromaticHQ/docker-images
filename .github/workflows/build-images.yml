@@ -15,13 +15,11 @@ on:  # yamllint disable-line rule:truthy
       - 'services/**'
 
 jobs:
-  image-build:
+  image-build-php:
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         php: [7.3, 7.4]
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -40,3 +38,26 @@ jobs:
           build_args: PHP_VERSION=${{ matrix.php }}
           repository: chromatichq/php-apache
           tags: ${{ matrix.php }}
+
+  image-build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        service: [node, google-chrome]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Validate docker images
+        if: ${{ github.event_name == 'pull_request' }}
+        run: docker build services/${{ matrix.service }}/
+
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v1
+        if: ${{ github.event_name != 'pull_request' }}
+        with:
+          path: services/${{ matrix.service }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: chromatichq/${{ matrix.service }}
+          tags: latest
