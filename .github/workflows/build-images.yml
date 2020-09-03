@@ -9,9 +9,11 @@ on:  # yamllint disable-line rule:truthy
     branches:
       - main
     paths:
+      - '.github/workflows/**'
       - 'services/**'
   pull_request:
     paths:
+      - '.github/workflows/**'
       - 'services/**'
 
 jobs:
