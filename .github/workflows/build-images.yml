@@ -45,7 +45,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        service: [google-chrome, node]
+        service: [node]
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
