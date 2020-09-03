@@ -9,9 +9,11 @@ on:  # yamllint disable-line rule:truthy
     branches:
       - main
     paths:
+      - '.github/workflows/**'
       - 'services/**'
   pull_request:
     paths:
+      - '.github/workflows/**'
       - 'services/**'
 
 jobs:
@@ -43,7 +45,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        service: [node, google-chrome]
+        service: [google-chrome, node]
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
