@@ -17,7 +17,7 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
       redis-tools \
       software-properties-common \
       yarn \
-    && pip3 install --upgrade setuptools \
+    && pip3 install --upgrade pip setuptools \
     && pip3 install wheel \
     && pip3 install ansible awscli pyyaml \
     && yes '' | pecl install -fo redis zip \
