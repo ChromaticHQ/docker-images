@@ -17,15 +17,16 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
       redis-tools \
       software-properties-common \
       yarn \
-    && pip3 install --upgrade pip setuptools \
+    && python3 -m pip install --upgrade pip \
+    && pip3 install --upgrade setuptools \
     && pip3 install wheel \
     && pip3 install ansible awscli pyyaml \
-    && yes '' | pecl install -fo redis zip \
+    && yes '' | pecl install -fo redis \
     && rm -rf /tmp/pear \
     && docker-php-ext-install opcache \
     && docker-php-ext-enable opcache \
     && docker-php-ext-enable redis \
-    && docker-php-ext-enable zip \
+    && docker-php-ext-install zip \
     && a2enmod headers rewrite \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
