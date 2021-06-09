@@ -5,6 +5,7 @@ ENV COMPOSER_NO_INTERACTION=true
 ENV COMPOSER_ALLOW_SUPERUSER=true
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash - \
     && source ~/.bashrc \
+    && nvm install lts \
     && nvm install 10 \
     && nvm use 10 \
     && curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - \
