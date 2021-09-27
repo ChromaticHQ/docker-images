@@ -16,7 +16,6 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | b
     && apt-get update \
     && apt-get --quiet install -y --no-install-recommends \
       libzip-dev \
-      nodejs \
       parallel \
       python3-pip \
       redis-tools \
