@@ -3,7 +3,12 @@ FROM tugboatqa/php:${PHP_VERSION}-apache
 ENV COMPOSER_DISCARD_CHANGES=true
 ENV COMPOSER_NO_INTERACTION=true
 ENV COMPOSER_ALLOW_SUPERUSER=true
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash - \
+    && . ~/.bashrc \
+    && nvm install --lts \
+    && nvm install 10 \
+    && nvm use 10 \
+    && nvm alias default 10 \
     && curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - \
     && echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list \
     && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
@@ -11,7 +16,6 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
     && apt-get update \
     && apt-get --quiet install -y --no-install-recommends \
       libzip-dev \
-      nodejs \
       parallel \
       python3-pip \
       redis-tools \
