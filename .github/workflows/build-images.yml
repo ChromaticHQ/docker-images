@@ -35,7 +35,7 @@ jobs:
         uses: docker/build-push-action@v1
         if: ${{ github.event_name == 'pull_request' }}
         with:
-          path: services/node-via-nvm
+          path: services/php-apache-nvm-test
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           build_args: PHP_VERSION=${{ matrix.php }}
