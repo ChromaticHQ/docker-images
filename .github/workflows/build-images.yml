@@ -33,7 +33,7 @@ jobs:
 
       - name: Build and push Docker images
         uses: docker/build-push-action@v1
-        if: ${{ github.event_name != 'pull_request' }}
+        if: ${{ github.event_name == 'pull_request' }}
         with:
           path: services/node-via-nvm
           username: ${{ secrets.DOCKERHUB_USERNAME }}
