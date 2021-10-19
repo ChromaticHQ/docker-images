@@ -9,6 +9,7 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | b
     && echo "#!/bin/bash" > /usr/local/bin/install-node-via-nvm.sh \
     && echo "set -ex" >> /usr/local/bin/install-node-via-nvm.sh \
     && echo "nvm install" >> /usr/local/bin/install-node-via-nvm.sh \
+    && chmod +x /usr/local/bin/install-node-via-nvm.sh \
     && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
     && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list \
     && apt-get update \
