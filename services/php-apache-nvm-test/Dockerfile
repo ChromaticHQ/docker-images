@@ -8,6 +8,7 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | b
     && nvm install --lts \
     && echo "#!/bin/bash" > /usr/local/bin/install-node-via-nvm.sh \
     && echo "set -ex" >> /usr/local/bin/install-node-via-nvm.sh \
+    && echo ". ~/.bashrc" >> /usr/local/bin/install-node-via-nvm.sh \
     && echo "nvm install" >> /usr/local/bin/install-node-via-nvm.sh \
     && chmod +x /usr/local/bin/install-node-via-nvm.sh \
     && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
