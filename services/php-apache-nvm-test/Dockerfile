@@ -6,9 +6,8 @@ ENV COMPOSER_ALLOW_SUPERUSER=true
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash - \
     && . ~/.bashrc \
     && nvm install --lts \
-    && echo "#!/bin/bash" > /usr/local/bin/install-node-via-nvm.sh \
-    && echo "set -ex" >> /usr/local/bin/install-node-via-nvm.sh \
-    && echo ". ~/.bashrc" >> /usr/local/bin/install-node-via-nvm.sh \
+    && echo "#!/bin/bash -l" > /usr/local/bin/install-node-via-nvm.sh \
+    && echo "set -e" >> /usr/local/bin/install-node-via-nvm.sh \
     && echo "nvm install" >> /usr/local/bin/install-node-via-nvm.sh \
     && echo "npm install -g yarn" >> /usr/local/bin/install-node-via-nvm.sh \
     && chmod +x /usr/local/bin/install-node-via-nvm.sh \
