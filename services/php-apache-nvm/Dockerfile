@@ -3,7 +3,7 @@ FROM tugboatqa/php:${PHP_VERSION}-apache
 ENV COMPOSER_DISCARD_CHANGES=true
 ENV COMPOSER_NO_INTERACTION=true
 ENV COMPOSER_ALLOW_SUPERUSER=true
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash - \
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash - \
     && . ~/.bashrc \
     && nvm install --lts \
     && echo "#!/bin/bash -l" > /usr/local/bin/install-node-via-nvm.sh \
