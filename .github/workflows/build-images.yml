@@ -21,6 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
+        service: ["php-apache", "php-apache-nvm"]
         php: [7.3, 7.4, "8.0"]
     steps:
       - name: Checkout code
@@ -28,17 +29,17 @@ jobs:
 
       - name: Validate docker images
         if: ${{ github.event_name == 'pull_request' }}
-        run: docker build services/php-apache/ --build-arg PHP_VERSION=${{ matrix.php }}
+        run: docker build services/${{ matrix.service }}/ --build-arg PHP_VERSION=${{ matrix.php }}
 
       - name: Build and push Docker images
         uses: docker/build-push-action@v1
         if: ${{ github.event_name != 'pull_request' }}
         with:
-          path: services/php-apache
+          path: services/${{ matrix.service }}
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           build_args: PHP_VERSION=${{ matrix.php }}
-          repository: chromatichq/php-apache
+          repository: chromatichq/${{ matrix.service }}
           tags: ${{ matrix.php }}
 
   image-build:
