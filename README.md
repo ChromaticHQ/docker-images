@@ -12,7 +12,11 @@ the weekend.
 The `php-apache-nvm` image installs nvm and creates a script to easily install
 your project’s required version of Node.js. Running the following from a
 project that uses this Docker image will install the version of Node specified
-in your `.nvmrc` file and then install Yarn.
+in your project’s `.nvmrc` file and then install Yarn:
+
+```sh
+/usr/local/bin/install-node-yarn-via-nvm
+```
 
 It should be noted that any Node-based commands (`node`, `nvm`, `npm`, `yarn`,
 etc.) are only available if nvm is loaded in the context in which your commands
