@@ -33,4 +33,6 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | b
     && docker-php-ext-install zip \
     && a2enmod headers rewrite \
     && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+    && git config --global --unset user.name  \
+    && git config --global --unset user.email

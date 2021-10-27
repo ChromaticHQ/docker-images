@@ -29,4 +29,6 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
     && docker-php-ext-install zip \
     && a2enmod headers rewrite \
     && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+    && git config --global --unset user.name  \
+    && git config --global --unset user.email
