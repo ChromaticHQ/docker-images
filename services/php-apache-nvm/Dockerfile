@@ -9,7 +9,7 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | b
     && nvm install --lts \
     && echo "#!/bin/bash -l" > $INSTALL_NODE_SCRIPT_PATH \
     && echo "set -e" >> $INSTALL_NODE_SCRIPT_PATH \
-    && echo "nvm install" >> $INSTALL_NODE_SCRIPT_PATH \
+    && echo "nvm install --default" >> $INSTALL_NODE_SCRIPT_PATH \
     && echo "npm install -g yarn" >> $INSTALL_NODE_SCRIPT_PATH \
     && chmod +x $INSTALL_NODE_SCRIPT_PATH \
     && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
