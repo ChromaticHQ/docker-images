@@ -7,6 +7,7 @@ ENV INSTALL_NODE_SCRIPT_PATH=/usr/local/bin/install-node-yarn-via-nvm
 RUN git clone https://github.com/tj/n.git \
     && cd n && make install && cd .. \
     && n lts \
+    && npm install --global yarn \
     && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
     && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list \
     && apt-get update \
