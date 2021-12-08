@@ -42,28 +42,6 @@ jobs:
           repository: chromatichq/${{ matrix.service }}
           tags: ${{ matrix.php }}
 
-  # DO NOT MERGE: Temporary build job for experimentation.
-  image-build-php-w-n:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        service: ["php-apache-n"]
-        php: ["8.0"]
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2.4.0
-
-      - name: Build and push Docker images
-        uses: docker/build-push-action@v1
-        if: ${{ github.event_name == 'pull_request' }}
-        with:
-          path: services/${{ matrix.service }}
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          build_args: PHP_VERSION=${{ matrix.php }}
-          repository: chromatichq/${{ matrix.service }}
-          tags: ${{ matrix.php }}
-
   image-build:
     runs-on: ubuntu-latest
     strategy:
