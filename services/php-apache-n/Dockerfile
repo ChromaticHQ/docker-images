@@ -5,7 +5,7 @@ ENV COMPOSER_NO_INTERACTION=true
 ENV COMPOSER_ALLOW_SUPERUSER=true
 ENV INSTALL_NODE_SCRIPT_PATH=/usr/local/bin/install-node-yarn-via-nvm
 RUN curl -L https://raw.githubusercontent.com/tj/n/master/bin/n -o /usr/local/bin/n \
-    && n lts
+    && n lts \
     && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
     && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list \
     && apt-get update \
