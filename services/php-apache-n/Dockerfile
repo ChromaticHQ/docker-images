@@ -3,7 +3,6 @@ FROM tugboatqa/php:${PHP_VERSION}-apache
 ENV COMPOSER_DISCARD_CHANGES=true
 ENV COMPOSER_NO_INTERACTION=true
 ENV COMPOSER_ALLOW_SUPERUSER=true
-ENV INSTALL_NODE_SCRIPT_PATH=/usr/local/bin/install-node-yarn-via-nvm
 RUN git clone https://github.com/tj/n.git \
     && cd n && make install && cd .. \
     && n lts \
