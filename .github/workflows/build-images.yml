@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        service: ["php-apache", "php-apache-nvm"]
+        service: ["php-apache", "php-apache-node"]
         php: [7.3, 7.4, "8.0"]
     steps:
       - name: Checkout code
