@@ -3,7 +3,7 @@ FROM tugboatqa/php:${PHP_VERSION}-apache
 ENV COMPOSER_DISCARD_CHANGES=true
 ENV COMPOSER_NO_INTERACTION=true
 ENV COMPOSER_ALLOW_SUPERUSER=true
-RUN git clone https://github.com/tj/n.git \
+RUN git clone --branch v8.0.1 https://github.com/tj/n.git \
     && cd n && make install && cd .. \
     && n lts \
     && npm install --global yarn \
