@@ -22,7 +22,7 @@ jobs:
     strategy:
       matrix:
         service: ["php-apache", "php-apache-node"]
-        php: [7.3, 7.4, "8.0"]
+        php: [7.3, 7.4, "8.0", "8.1"]
     steps:
       - name: Checkout code
         uses: actions/checkout@v2.4.0
