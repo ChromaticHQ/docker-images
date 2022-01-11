@@ -43,6 +43,8 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           builder: ${{ steps.buildx.outputs.name }}
+          build-args: |
+            PHP_VERSION=${{ matrix.php }}
           file: services/${{ matrix.service }}/Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
           tags: chromatichq/${{ matrix.service }}:${{ matrix.php }}
