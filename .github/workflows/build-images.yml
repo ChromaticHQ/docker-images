@@ -46,6 +46,7 @@ jobs:
           build-args: |
             PHP_VERSION=${{ matrix.php }}
           file: services/${{ matrix.service }}/Dockerfile
+          # Only push built images if this is not a pull request.
           push: ${{ github.event_name != 'pull_request' }}
           tags: chromatichq/${{ matrix.service }}:${{ matrix.php }}
 
