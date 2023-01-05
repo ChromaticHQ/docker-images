@@ -7,6 +7,7 @@ RUN curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - \
     && apt-get --quiet install -y --no-install-recommends \
       libxss1 \
       libxtst6 \
+      libx11-xcb1 \
       google-chrome-stable \
       nodejs \
       yarn \
