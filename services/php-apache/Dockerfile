@@ -3,9 +3,10 @@ FROM tugboatqa/php:${PHP_VERSION}-apache
 ENV COMPOSER_DISCARD_CHANGES=true
 ENV COMPOSER_NO_INTERACTION=true
 ENV COMPOSER_ALLOW_SUPERUSER=true
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
-    && curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - \
-    && echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list \
+RUN git clone --branch v8.0.1 https://github.com/tj/n.git \
+    && cd n && make install && cd .. \
+    && n lts \
+    && npm install --global yarn \
     && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
     && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list \
     && apt-get update \
