@@ -15,6 +15,7 @@ on:  # yamllint disable-line rule:truthy
     paths:
       - '.github/workflows/**'
       - 'services/**'
+  workflow_dispatch:
 
 jobs:
   image-build-php:
