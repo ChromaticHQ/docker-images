@@ -5,7 +5,7 @@ ENV COMPOSER_NO_INTERACTION=true
 ENV COMPOSER_ALLOW_SUPERUSER=true
 RUN git clone --branch v8.0.1 https://github.com/tj/n.git \
     && cd n && make install && cd .. \
-    && n lts \
+    && n 10 \
     && npm install --global yarn \
     && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
     && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list \
