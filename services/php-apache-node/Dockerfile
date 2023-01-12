@@ -26,7 +26,6 @@ RUN git clone --branch v8.0.1 https://github.com/tj/n.git \
     && docker-php-ext-enable opcache \
     && docker-php-ext-enable redis \
     && docker-php-ext-install zip \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && a2enmod headers rewrite \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
