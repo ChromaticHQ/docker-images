@@ -2,7 +2,6 @@ FROM tugboatqa/node:latest
 RUN git clone https://github.com/tj/n.git \
     && cd n && make install && cd .. \
     && n lts \
-    && npm install --global yarn \
     && yarn global install http-server \
     && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
     && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list \
