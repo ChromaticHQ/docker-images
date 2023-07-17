@@ -12,15 +12,9 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
     && apt-get --quiet install -y --no-install-recommends \
       libzip-dev \
       nodejs \
-      parallel \
-      python3-pip \
       redis-tools \
       software-properties-common \
       yarn \
-    && python3 -m pip install --upgrade pip \
-    && pip3 install --upgrade setuptools \
-    && pip3 install wheel \
-    && pip3 install ansible awscli pyyaml \
     && yes '' | pecl install -fo redis \
     && rm -rf /tmp/pear \
     && docker-php-ext-install opcache \
