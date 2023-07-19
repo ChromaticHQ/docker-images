@@ -51,6 +51,16 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: chromatichq/${{ matrix.service }}:${{ matrix.php }}
 
+      - name: Notify slack on failure
+        if: ${{ failure() && (github.event_name == 'push' || github.event_name == 'schedule') }}
+        uses: voxmedia/github-action-slack-notify-build@v2
+        with:
+          channel: devops-alerts
+          status: FAILED
+          color: danger
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.GHACTION_SLACK_BOT_TOKEN }}
+
   image-build:
     runs-on: ubuntu-latest
     strategy:
@@ -80,3 +90,13 @@ jobs:
           file: services/${{ matrix.service }}/Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
           tags: chromatichq/${{ matrix.service }}:latest
+
+      - name: Notify slack on failure
+        if: ${{ failure() && (github.event_name == 'push' || github.event_name == 'schedule') }}
+        uses: voxmedia/github-action-slack-notify-build@v2
+        with:
+          channel: devops-alerts
+          status: FAILED
+          color: danger
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.GHACTION_SLACK_BOT_TOKEN }}
