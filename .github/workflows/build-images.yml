@@ -52,7 +52,7 @@ jobs:
           tags: chromatichq/${{ matrix.service }}:${{ matrix.php }}
 
       - name: Notify slack on failure
-        if: failure() && github.event_name != 'pull_request'
+        if: ${{ failure() && (github.event_name == 'push' || github.event_name == 'schedule') }}
         uses: voxmedia/github-action-slack-notify-build@v2
         with:
           channel: devops-alerts
@@ -92,7 +92,7 @@ jobs:
           tags: chromatichq/${{ matrix.service }}:latest
 
       - name: Notify slack on failure
-        if: failure() && github.event_name != 'pull_request'
+        if: ${{ failure() && (github.event_name == 'push' || github.event_name == 'schedule') }}
         uses: voxmedia/github-action-slack-notify-build@v2
         with:
           channel: devops-alerts
