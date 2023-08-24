@@ -16,8 +16,6 @@ RUN git clone https://github.com/tj/n.git \
       software-properties-common \
     && yes '' | pecl install -fo redis \
     && rm -rf /tmp/pear \
-    && docker-php-ext-install opcache \
-    && docker-php-ext-enable opcache \
     && docker-php-ext-enable redis \
     && docker-php-ext-install zip \
     && a2enmod headers rewrite \
