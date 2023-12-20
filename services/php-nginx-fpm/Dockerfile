@@ -18,7 +18,6 @@ RUN git clone https://github.com/tj/n.git \
     && rm -rf /tmp/pear \
     && docker-php-ext-enable redis \
     && docker-php-ext-install zip \
-    && a2enmod headers rewrite \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && git config --global --unset user.name  \
