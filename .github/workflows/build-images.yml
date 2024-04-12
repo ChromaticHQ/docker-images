@@ -59,7 +59,7 @@ jobs:
 
       - name: Notify slack on failure
         if: ${{ failure() && (github.event_name == 'push' || github.event_name == 'schedule') }}
-        uses: voxmedia/github-action-slack-notify-build@v1.6.0
+        uses: voxmedia/github-action-slack-notify-build@v2
         with:
           channel: devops-alerts
           status: FAILED
@@ -99,7 +99,7 @@ jobs:
 
       - name: Notify slack on failure
         if: ${{ failure() && (github.event_name == 'push' || github.event_name == 'schedule') }}
-        uses: voxmedia/github-action-slack-notify-build@v1.6.0
+        uses: voxmedia/github-action-slack-notify-build@v2
         with:
           channel: devops-alerts
           status: FAILED
