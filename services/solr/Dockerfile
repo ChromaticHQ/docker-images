@@ -61,4 +61,5 @@ solr zk cp file:/var/solr/data/security.json zk:/security.json -z localhost:9983
 EOF
 
 RUN chown -R solr:solr /var/solr/data && \
-chmod +x docker/scripts/zkauth.sh
+chmod +x docker/scripts/zkauth.sh && \
+sed -i '/<!-- Uncomment to enable handling of X-Forwarded- style headers/,/-->/c\    <Call name="addCustomizer"><Arg><New class="org.eclipse.jetty.server.ForwardedRequestCustomizer"/></Arg></Call>' /opt/solr/server/etc/jetty.xml
