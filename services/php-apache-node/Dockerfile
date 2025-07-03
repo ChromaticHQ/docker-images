@@ -14,10 +14,16 @@ RUN git clone https://github.com/tj/n.git \
       libzip-dev \
       redis-tools \
       software-properties-common \
+      jpegoptim \
+      pngquant \
+      libwebp-dev \
+      libavif-dev \
     && yes '' | pecl install -fo redis \
     && rm -rf /tmp/pear \
     && docker-php-ext-enable redis \
     && docker-php-ext-install zip \
+    && docker-php-ext-configure gd --with-freetype --with-webp --with-jpeg --with-avif \
+    && docker-php-ext-install gd \
     && a2enmod headers rewrite \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
