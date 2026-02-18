@@ -13,7 +13,6 @@ RUN git clone https://github.com/tj/n.git \
     && apt-get --quiet install -y --no-install-recommends \
       libzip-dev \
       redis-tools \
-      software-properties-common \
     && yes '' | pecl install -fo redis \
     && rm -rf /tmp/pear \
     && docker-php-ext-enable redis \
