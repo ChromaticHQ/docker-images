@@ -12,6 +12,9 @@ RUN git clone https://github.com/tj/n.git \
     && apt-get update \
     && apt-get --quiet install -y --no-install-recommends \
       libzip-dev \
+      libfreetype6-dev \
+      libjpeg62-turbo-dev \
+      libpng-dev \
       redis-tools \
       software-properties-common \
       jpegoptim \
