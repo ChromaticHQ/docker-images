@@ -16,7 +16,7 @@ RUN git clone https://github.com/tj/n.git \
       libjpeg62-turbo-dev \
       libpng-dev \
       redis-tools \
-      software-properties-common \
+      google-chrome-stable \
       jpegoptim \
       pngquant \
       libwebp-dev \
