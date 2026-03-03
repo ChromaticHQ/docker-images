@@ -11,16 +11,16 @@ RUN git clone https://github.com/tj/n.git \
     && echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome.gpg] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list \
     && apt-get update \
     && apt-get --quiet install -y --no-install-recommends \
-      libzip-dev \
+      google-chrome-stable \
+      jpegoptim \
+      libavif-dev \
       libfreetype6-dev \
       libjpeg62-turbo-dev \
       libpng-dev \
-      redis-tools \
-      google-chrome-stable \
-      jpegoptim \
-      pngquant \
       libwebp-dev \
-      libavif-dev \
+      libzip-dev \
+      pngquant \
+      redis-tools \
     && yes '' | pecl install -fo redis \
     && rm -rf /tmp/pear \
     && docker-php-ext-enable redis \
